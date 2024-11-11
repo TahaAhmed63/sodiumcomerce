@@ -61,7 +61,7 @@ export default function Header() {
 
           {/* Center Logo */}
           <Link href="/" className="absolute left-1/2  -translate-x-1/2 -translate-y-1">
-       <Image src={logo} width="200px" height="auto"/>
+       <Image src={logo} width="200px" height="auto" alt='logo'/>
           </Link>
 
           {/* Right Section */}
