@@ -25,3 +25,9 @@ body {
     text-wrap: balance;
   }
 }
+
+.swiper-button-prev, .swiper-button-next,.swiper-button-next, .swiper-rtl .swiper-button-prev{
+  color: #fff !important;
+    background: #00000075;
+    padding: 33px;
+}

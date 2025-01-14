@@ -73,11 +73,11 @@ const Footer = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-1 px-4 py-2 border border-gray-300 focus:outline-none focus:border-sky-600"
+              className="flex-1 px-1 py-2 border border-gray-300 focus:outline-none focus:border-sky-600"
             />
             <button
               type="submit"
-              className="px-4 py-2 bg-sky-600 text-white hover:bg-sky-700 transition-colors"
+              className="px-2 py-1 bg-sky-600 text-white hover:bg-sky-700 transition-colors"
             >
             <ChevronRight className="h-5 w-5" />
             </button>
