@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useState } from 'react'
 import { User, ShoppingBag, Facebook, Twitter, Instagram } from 'lucide-react'
-import logo from './../assest/newlogo.png'
+import logo from './../assest/finalLogo.png'
 import { Search, Menu } from 'lucide-react'
 import Image from 'next/image'
 
@@ -17,16 +17,10 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const categories = [
-    'DRESSES',
-    'SHOES',
-    'DENIM JACKET',
-    'WINTER COATS',
-    'CARDIGANS',
-    'BLAZERS',
-    'SWEATER DRESSES',
-    'DENIM SHORTS',
-    'T-SHIRTS',
-    'ACCESSORIES',
+    'HOME',
+    'NEW ARRIVALS',
+    'BEST SELLING',
+    'ABOUT',
   ]
 
   return (
