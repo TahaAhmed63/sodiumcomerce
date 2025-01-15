@@ -18,7 +18,7 @@ export default function Header() {
 
   const categories = [
     'HOME',
-    'NEW ARRIVALS',
+    'NEW  ARRIVALS',
     'BEST SELLING',
     'ABOUT',
   ]
