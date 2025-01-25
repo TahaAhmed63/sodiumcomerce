@@ -10,9 +10,9 @@ import { cn } from "@/lib/utils"
 import { useParams } from "next/navigation"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProductData } from "@/store/slice/productslice"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
-import { Button } from "@/components/ui/button"
+import { RadioGroup, RadioGroupItem } from "./../../../components/ui/radio-group"
+import { Label } from "./../../../components/ui/label"
+import { Button } from "./../../../components/ui/button"
 
 export default function ProductPage({params}) {
   const [selectedImage, setSelectedImage] = useState(0)
