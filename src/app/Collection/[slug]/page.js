@@ -56,6 +56,7 @@ return (
         {/* Product Gallery */}
         <div className="space-y-4">
           <div className="relative aspect-square overflow-hidden rounded-lg border bg-muted">
+            
             <Image
               src={images[selectedImage] || "/placeholder.svg"}
               alt="Product image"
