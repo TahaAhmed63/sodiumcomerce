@@ -1,6 +1,6 @@
 "use-client"
 import React, { useEffect, useState } from 'react'
-import Heading from '@/Components/mainComponents/heading'
+import Heading from './../../../src/Components/mainComponents/Heading'
 import { fetchCatagoiesData } from '@/store/slice/catagoriesSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
