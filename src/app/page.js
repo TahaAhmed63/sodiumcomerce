@@ -20,6 +20,8 @@ import Trending from '@/Components/Trending'
 import QouteSection from '@/Components/homeComponents/QouteSection'
 import MainCollection from '@/Components/homeComponents/MainCollection'
 import FullWidthSec from '@/Components/homeComponents/FullWidthSec'
+import FeaturedCollection from '@/Components/homeComponents/FeaturedCollection'
+import Catagories from '@/Components/homeComponents/Catagories'
 // import productimg3 from "./../assest/sec1img2.webp"
 
 export default function Home() {
@@ -72,43 +74,11 @@ export default function Home() {
         </section>
 
         {/* Quote Section */}
-     <QouteSection/>
+   <FeaturedCollection/>
 
-        {/* Denim Collection */}
-<MainCollection/>
-<Trending/>
-        {/* Loungewear */}
-<FullWidthSec/>
 
-        {/* The Yes Shop */}
-        <section className="py-16">
-          <div className=" ">
-            <h2 className="text-2xl font-bold mb-8 text-center">THE Tea SHOP</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {denimCollection?.products.map((e, i) => (
-                <div key={i} className="group cursor-pointer">
-                  <div className="aspect-[3/4] relative mb-4">
-                    <Image
-                      src={e?.image}
-                      alt="Denim Product"
-                      className="object-cover"
-                      fill
-                    />
-                  </div>
-                  <h3 className="text-sm font-medium mb-2">{e?.name}</h3>
-                  <div className="flex mb-2">
-                    {[...Array(e?.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 text-sky-600 fill-sky-600" />
-                    ))}
-                  </div>
-                  <p className="text-lg font-bold">{e?.price}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* Blog Posts */}
+     <Catagories/>
    
       </main>
 

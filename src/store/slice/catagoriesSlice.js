@@ -4,9 +4,9 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
-export const fetchProductData = createAsyncThunk("products", async () => {
+export const fetchCatagoiesData = createAsyncThunk("catagories", async () => {
   try {
-    const response = await axios.get(`${process.env.NEXT_PUBLIC_SITE_URL}/api/products`);
+    const response = await axios.get(`${process.env.NEXT_PUBLIC_SITE_URL}/api/catagories`);
     return response.data;
   } catch (error) {
     throw error;
@@ -15,8 +15,8 @@ export const fetchProductData = createAsyncThunk("products", async () => {
 //SDS
 
 
-const productslice = createSlice({
-  name: "products",
+const catagoriesslice = createSlice({
+  name: "catagories",
   initialState: {
     data: [],
     status: "idle",
@@ -25,18 +25,18 @@ const productslice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchProductData.pending, (state) => {
+      .addCase(fetchCatagoiesData.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchProductData.fulfilled, (state, action) => {
+      .addCase(fetchCatagoiesData.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.data = action.payload;
       })
-      .addCase(fetchProductData.rejected, (state, action) => {
+      .addCase(fetchCatagoiesData.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       });
   },
 });
 
-export default productslice.reducer;
+export default catagoriesslice.reducer;
