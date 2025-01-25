@@ -23,8 +23,8 @@ const Catagories = () => {
   return (
     <>
     <Heading head={'Catagories'}/>
-    {catagories?.map((cat)=>(
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 container mx-auto px-4 py-8">
+    {catagories?.map((cat,i)=>(
+        <div  key={i} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 container mx-auto px-4 py-8">
     
     <div className="flex items-center relative catagories-bg text-white">
         <div className='absolute inset-0 bg-black bg-opacity-40 opacity-100 flex items-center justify-center ' style={{ backgroundImage: `url(${cat?.image?.src})` }}>
