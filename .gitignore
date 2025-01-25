@@ -8,7 +8,7 @@
 
 # testing
 /coverage
-
+git config core.ignorecase false
 # next.js
 /.next/
 /out/
