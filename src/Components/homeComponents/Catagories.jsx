@@ -1,3 +1,4 @@
+"use-client"
 import React, { useEffect, useState } from 'react'
 import Heading from '../mainComponents/heading'
 import { fetchCatagoiesData } from '@/store/slice/catagoriesSlice';
