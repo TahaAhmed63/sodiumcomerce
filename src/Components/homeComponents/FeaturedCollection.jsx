@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Heading from '../mainComponents/heading'
+
 import { ProductCard } from './ProductCard'
 import productimg1 from "./../../assest/mainimg1.webp";
 import productimg2 from "./../../assest/sec1img2.webp";
@@ -7,6 +7,7 @@ import productimg3 from "./../../assest/product2.webp";
 import productimg4 from "./../../assest/product3.webp";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductData } from '@/store/slice/productslice';
+import Heading from '../mainComponents/Heading';
 
 const FeaturedCollection = () => {
 
