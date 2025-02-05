@@ -111,13 +111,14 @@ filteredsingleProduct?.map((singleproduct,index)=>(
 
 <RadioGroup
 id="size"
+key={index}
 value={variation?.attributes?.sizes}
 onValueChange={setSelectedSize}
 className="flex flex-wrap gap-3"
 >
             <Label
 
-            key={index}
+       
                 htmlFor={`size-${variation?.attributes?.sizes}}`}
                 className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-md border peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/10"
               >
