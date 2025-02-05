@@ -56,7 +56,7 @@ return (
     <div className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-8">
    {
 filteredsingleProduct?.map((singleproduct,index)=>(
-  <div className="grid gap-8 lg:grid-cols-2">
+  <div className="grid gap-8 lg:grid-cols-2" key={index}>
   {/* Product Gallery */}
   <div className="space-y-4">
     <div className="relative aspect-square overflow-hidden rounded-lg border bg-muted">
