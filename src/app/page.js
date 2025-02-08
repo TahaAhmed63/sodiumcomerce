@@ -30,39 +30,7 @@ export default function Home() {
   useEffect(() => {
     setMounted(true)
   }, [])
-  const denimCollection = {
-    title: "DENIM COLLECTION",
-    products: [
-      {
-        id: 1,
-        name: "Denim Product 1",
-        image: productimg1, // Replace with actual image path or variable
-        price: 99.99,
-        rating: 5, // Assume all products have 5 stars; adjust if needed
-      },
-      {
-        id: 2,
-        name: "Denim Product 2",
-        image: productimg2,
-        price: 99.99,
-        rating: 5,
-      },
-      {
-        id: 3,
-        name: "Denim Product 3",
-        image: productimg3,
-        price: 99.99,
-        rating: 5,
-      },
-      {
-        id: 4,
-        name: "Denim Product 4",
-        image: productimg4,
-        price: 99.99,
-        rating: 5,
-      },
-    ],
-  };
+
   if (!mounted) return null
   return (  
     <div className="min-h-screen bg-white">
