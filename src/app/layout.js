@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Providers } from "@/store/ReduxProvider";
+import MiniCart from "@/Components/mincart/MiniCart";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,7 +30,7 @@ export default function RootLayout({ children }) {
            <Providers>
                     <Header/>
         {children}
-       
+        <MiniCart /> 
         <Footer/>
         </Providers>
 

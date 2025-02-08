@@ -8,12 +8,13 @@ import { cn } from "@/lib/utils"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProductData } from "@/store/slice/productslice"
 import { Button } from "@/components/ui/button"
+import { addItem, toggleCart } from "@/store/slice/cartslice"
 
 export default function ProductPage({ params }) {
   const [selectedAttributes, setSelectedAttributes] = useState({})
   const [selectedVariation, setSelectedVariation] = useState(null)
   const [selectedImage, setSelectedImage] = useState('')
-
+  const [quantity, setQuantity] = useState(1);  
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products.data);
 
@@ -24,6 +25,9 @@ export default function ProductPage({ params }) {
   const publishedProducts = products?.products?.filter(
     (product) => product.status !== "draft"
   );
+
+
+  
   const filteredsingleProduct = publishedProducts?.find((e) => e?.slug === params?.slug);
 
   // Extract unique attributes
@@ -34,7 +38,13 @@ export default function ProductPage({ params }) {
       attributes[key].add(value);
     });
   });
+  const handleIncrement = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
+  };
 
+  const handleDecrement = () => {
+    if (quantity > 1) setQuantity(prevQuantity => prevQuantity - 1);
+  };
   // Convert Set to array
   const attributeOptions = Object.fromEntries(
     Object.entries(attributes).map(([key, value]) => [key, Array.from(value)])
@@ -64,9 +74,33 @@ export default function ProductPage({ params }) {
     setSelectedVariation(null);
     setSelectedImage(filteredsingleProduct?.images[0]?.src);
   };
+  console.log(selectedVariation,"selectedVariation")
 
+  const handleAddToCart = () => {
+    const roundedQuantity = Math.ceil(quantity); // Ensure quantity is always rounded up
+
+    const item = {
+      id: filteredsingleProduct.id,
+      name: filteredsingleProduct?.type ==="variable" ? filteredsingleProduct?.name + selectedVariation?.name : singleProduct?.name,
+      variationName: selectedVariation?.name,
+      variationId: selectedVariation?.id,
+      price: selectedVariation ? selectedVariation.price : filteredsingleProduct.price,
+      quantity:roundedQuantity ?  roundedQuantity:'1' ,
+      img:selectedVariation? selectedVariation?.image : filteredsingleProduct?.images.map((e)=>(e?.src))
+    };
+    dispatch(addItem(item));
+dispatch(toggleCart())
+  };
   if (!filteredsingleProduct) return <p>Loading...</p>;
+  const prices = filteredsingleProduct?.variations
+    ?.map((variation) =>
+      variation.price !== "" ? parseFloat(variation.price) : null
+    )
+    .filter((price) => price !== null); // Filter out null values
 
+  // Calculate minimum and maximum prices
+  const minPrice = prices.length > 0 ? Math.min(...prices) : null;
+  const maxPrice = prices.length > 0 ? Math.max(...prices) : null;
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-8">
@@ -108,10 +142,20 @@ export default function ProductPage({ params }) {
           <div className="space-y-6">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold">{filteredsingleProduct?.name}</h1>
-              <div
+              {/* <div
                 className="text-2xl font-semibold text-primary"
                 dangerouslySetInnerHTML={{ __html: selectedVariation?.price_html || filteredsingleProduct?.price_html }}
-              />
+              /> */}
+                <div
+                className="text-2xl font-semibold text-primary"> PKR{" "}
+                  {minPrice === maxPrice
+                    ? minPrice
+                    : `${minPrice} - PKR ${maxPrice}`}
+       </div>
+       <div
+                className="text-2xl font-semibold text-primary"> PKR{" "}
+             {selectedVariation && `RS ` + selectedVariation?.price}
+       </div>
             </div>
 
             <p className="text-muted-foreground" dangerouslySetInnerHTML={{
@@ -142,10 +186,21 @@ export default function ProductPage({ params }) {
                 Clear
               </button>
             )}
-
+ <div className="quantity-controls d-flex align-items-center gap-2">
+              <button onClick={handleDecrement} className="btn btn-warning">-</button>
+              <input
+                type="number"
+                value={quantity}
+                onChange={(e) => setQuantity(Number(e.target.value))}
+                className="form-control text-center"
+                style={{ width: "50px" }}
+                min="1"
+              />
+              <button onClick={handleIncrement} className="btn btn-warning">+</button>
+              </div>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <Button className="flex-1 gap-2" size="lg">
-                <ShoppingCart className="h-5 w-5" />
+              <Button className="flex-1 gap-2" size="lg"  onClick={handleAddToCart}>
+                <ShoppingCart className="h-5 w-5"    />
                 Add to Cart
               </Button>
               <Button variant="outline" size="lg">
@@ -155,6 +210,8 @@ export default function ProductPage({ params }) {
           </div>
         </div>
       </div>
+  
     </div>
+    
   )
 }

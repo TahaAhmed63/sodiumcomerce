@@ -45,8 +45,8 @@ export default function Component() {
       />
       <div className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex items-center gap-2 p-4 border-b">
-          <ShoppingBag className="h-6 w-6 text-orange-500" />
-          <span className="text-lg font-medium text-orange-500">Shopping Basket</span>
+          <ShoppingBag className="h-6 w-6 text-sky-500" />
+          <span className="text-lg font-medium text-sky-500">Shopping Basket</span>
           <button 
             onClick={handleClose}
             className="ml-auto text-2xl text-gray-400 hover:text-gray-500 bg-white"
@@ -110,14 +110,14 @@ export default function Component() {
             <div className="grid gap-2 gy-3">
               <Link 
                 href="/cart"
-                className="block w-full rounded bg-orange-500 px-4 py-2 text-center text-white hover:bg-orange-600 my-2"
+                className="block w-full rounded bg-sky-500 px-4 py-2 text-center text-white hover:bg-orange-600 my-2"
                 onClick={handleClose}
               >
                 View basket
               </Link>
               <Link
                 href="/checkout"
-                className="block w-full rounded bg-orange-500 px-4 py-2 text-center text-white hover:bg-orange-600 my-2"
+                className="block w-full rounded bg-sky-500 px-4 py-2 text-center text-white hover:bg-orange-600 my-2"
                 onClick={handleClose}
               >
                 Checkout
