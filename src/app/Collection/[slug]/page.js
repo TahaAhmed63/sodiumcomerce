@@ -91,6 +91,7 @@ export default function ProductPage({ params }) {
     dispatch(addItem(item));
 dispatch(toggleCart())
   };
+  
   if (!filteredsingleProduct) return <p>Loading...</p>;
   const prices = filteredsingleProduct?.variations
     ?.map((variation) =>
@@ -101,6 +102,8 @@ dispatch(toggleCart())
   // Calculate minimum and maximum prices
   const minPrice = prices.length > 0 ? Math.min(...prices) : null;
   const maxPrice = prices.length > 0 ? Math.max(...prices) : null;
+
+  
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-8">
@@ -153,8 +156,8 @@ dispatch(toggleCart())
                     : `${minPrice} - PKR ${maxPrice}`}
        </div>
        <div
-                className="text-2xl font-semibold text-primary"> PKR{" "}
-             {selectedVariation && `RS ` + selectedVariation?.price}
+                className="text-2xl font-semibold text-primary"> 
+             { selectedVariation ? " PKR" +" "+ selectedVariation && `RS ` + selectedVariation?.price:null}
        </div>
             </div>
 
@@ -199,10 +202,38 @@ dispatch(toggleCart())
               <button onClick={handleIncrement} className="btn btn-warning">+</button>
               </div>
             <div className="flex flex-col gap-4 sm:flex-row">
-              <Button className="flex-1 gap-2" size="lg"  onClick={handleAddToCart}>
-                <ShoppingCart className="h-5 w-5"    />
-                Add to Cart
-              </Button>
+            <Button
+  className="flex-1 gap-2"
+  size="lg"
+  onClick={handleAddToCart}
+  disabled={
+    (filteredsingleProduct?.type === "variable" &&
+      (selectedVariation === null ||
+        filteredsingleProduct?.stock_status === "outofstock")) ||
+    (filteredsingleProduct?.type === "simple" &&
+      ((filteredsingleProduct?.stock_quantity < 1 &&
+        filteredsingleProduct?.stock_quantity !== null &&
+        filteredsingleProduct?.stock_status !== "onbackorder") ||
+        (filteredsingleProduct?.stock_status === "outofstock" &&
+          filteredsingleProduct?.stock_status !== "onbackorder")))
+  }
+  aria-disabled={
+    (filteredsingleProduct?.type === "variable" &&
+      (filteredsingleProduct === null ||
+        filteredsingleProduct?.stock_status === "outofstock")) ||
+    (filteredsingleProduct?.type === "simple" &&
+      ((filteredsingleProduct?.stock_quantity < 1 &&
+        filteredsingleProduct?.stock_quantity !== null &&
+        filteredsingleProduct?.stock_status !== "onbackorder") ||
+        (filteredsingleProduct?.stock_status === "outofstock" &&
+          filteredsingleProduct?.stock_status !== "onbackorder")))
+  }
+>
+  <ShoppingCart className="h-5 w-5" />
+  Add to Cart
+</Button>
+
+
               <Button variant="outline" size="lg">
                 <Heart className="h-5 w-5" />
               </Button>
