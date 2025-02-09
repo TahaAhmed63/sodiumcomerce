@@ -22,7 +22,7 @@
       console.log(catagories,"catagories")
     return (
       <>
-      <Heading head={'Catagories'}/>
+      {/* <Heading head={'Catagories'}/> */}
       <div   className="grid gap-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 container mx-auto px-4 py-8 ">
 
       {catagories?.map((cat,i)=>(

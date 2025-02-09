@@ -87,3 +87,168 @@
         background-size: 100% 100%;
         background-repeat: no-repeat;
       }
+      /* General Styles */
+/* General Styling */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Top Header */
+.bg-dark {
+  background-color: #121212 !important;
+}
+
+.text-white {
+  color: white !important;
+}
+
+.d-flex .btn-outline-light {
+  border: none;
+  color: white;
+  background: transparent;
+  transition: color 0.3s ease-in-out;
+}
+
+.d-flex .btn-outline-light:hover {
+  color: #bbb;
+}
+
+/* Social Icons */
+.d-lg-flex.gap-3 a svg {
+  color: white;
+  width: 18px;
+  height: 18px;
+}
+
+/* Cart Badge */
+.position-relative {
+  position: relative;
+}
+
+.position-relative .badge {
+  font-size: 12px;
+  padding: 5px 8px;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
+
+/* Navbar Styling */
+.navbar {
+  padding: 10px 0;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav .nav-item {
+  margin: 0 15px;
+}
+
+.navbar-nav .nav-link {
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #007bff;
+}
+
+/* Logo */
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-brand img {
+  max-height: 80px;
+  width: auto;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: white;
+  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease-in-out;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar .nav-link {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.sidebar .nav-link:hover {
+  background: #007bff;
+  color: white;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Responsive Fix */
+@media (max-width: 991px) {
+  .navbar-nav {
+    display: none;
+  }
+  .d-lg-flex {
+    display: flex !important;
+  }
+}
+/* ProductCard.css */
+.product-card {
+  transition: transform 0.3s ease;
+}
+.product-card:hover {
+  transform: scale(1.05);
+}
+.product-image {
+  width: 100%;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+.product-image:hover .overlay {
+  opacity: 1;
+}

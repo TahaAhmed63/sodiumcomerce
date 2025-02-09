@@ -4,7 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Providers } from "@/store/ReduxProvider";
 import MiniCart from "@/Components/mincart/MiniCart";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",

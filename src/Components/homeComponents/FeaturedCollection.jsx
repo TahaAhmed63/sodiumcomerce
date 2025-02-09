@@ -1,51 +1,43 @@
-import React, { useEffect, useState } from 'react'
-
-import { ProductCard } from './ProductCard'
-import productimg1 from "./../../assest/mainimg1.webp";
-import productimg2 from "./../../assest/sec1img2.webp";
-import productimg3 from "./../../assest/product2.webp";
-import productimg4 from "./../../assest/product3.webp";
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductData } from '@/store/slice/productslice';
-import Heading from '../mainComponents/Heading';
+import ProductCard from './ProductCard';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const FeaturedCollection = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.products.data);
+  const [loading, setLoading] = useState(true);
 
-  
-      const dispatch = useDispatch();
-      const products = useSelector((state) => state.products.data);
-    
-      const [loading, setLoading] = useState(true);
-    
-      useEffect(() => {
-        const fetchData = async () => {
-          setLoading(true); // Start loading
-          await dispatch(fetchProductData());
-          setLoading(false); // End loading
-        };
-        fetchData();
-      }, [dispatch]);
-      const publishedProducts = products?.products?.filter(
-        (product) => product.status !== "draft"
-      );
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      await dispatch(fetchProductData());
+      setLoading(false);
+    };
+    fetchData();
+  }, [dispatch]);
+
+  const publishedProducts = products?.products?.filter(
+    (product) => product.status !== "draft"
+  );
+
   return (
     <>
-  <Heading head={'Featured collection'} />
-    <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {publishedProducts?.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    </div>
-    <div className='flex justify-center w-100'>
-    <button className='text-white text-sm  text-center  fz-29 px-5 p-1 bg-black my-3 py-2'>
-        
-view all
-    </button>
-    </div>
-  </>
-  )
-}
+    
+        <div className="row g-4">
+          {publishedProducts?.map((product) => (
+            <div key={product.id} className="col-12 col-sm-6 col-lg-3">
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+        <div className='d-flex justify-content-center mt-3'>
+          <button className='btn btn-dark px-4 py-2'>View All</button>
+        </div>
+      
+    </>
+  );
+};
 
-export default FeaturedCollection
+export default FeaturedCollection;

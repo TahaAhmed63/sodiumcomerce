@@ -40,10 +40,10 @@ export default function Component() {
   return (
     <>
       <div 
-        className="fixed inset-0 bg-black/20 z-40"
+        className="fixed inset-0 bg-black/20 z-[9999]"
         onClick={handleClose}
       />
-      <div className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+      <div className={`fixed top-0 right-0 h-full w-[400px]  z-[9999] bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <div className="flex items-center gap-2 p-4 border-b">
           <ShoppingBag className="h-6 w-6 text-sky-500" />
           <span className="text-lg font-medium text-sky-500">Shopping Basket</span>
