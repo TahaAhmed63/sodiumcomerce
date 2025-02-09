@@ -81,7 +81,7 @@ export default function ProductPage({ params }) {
 
     const item = {
       id: filteredsingleProduct.id,
-      name: filteredsingleProduct?.type ==="variable" ? filteredsingleProduct?.name + selectedVariation?.name : singleProduct?.name,
+      name: filteredsingleProduct?.type ==="variable" ? filteredsingleProduct?.name + selectedVariation?.name : filteredsingleProduct?.name,
       variationName: selectedVariation?.name,
       variationId: selectedVariation?.id,
       price: selectedVariation ? selectedVariation.price : filteredsingleProduct.price,
@@ -154,6 +154,7 @@ dispatch(toggleCart())
                   {minPrice === maxPrice
                     ? minPrice
                     : `${minPrice} - PKR ${maxPrice}`}
+                    {filteredsingleProduct ? filteredsingleProduct?.type==="simple" && filteredsingleProduct?.price:null}
        </div>
        <div
                 className="text-2xl font-semibold text-primary"> 
@@ -209,7 +210,8 @@ dispatch(toggleCart())
   disabled={
     (filteredsingleProduct?.type === "variable" &&
       (selectedVariation === null ||
-        filteredsingleProduct?.stock_status === "outofstock")) ||
+        filteredsingleProduct?.stock_status === "outofstock" ||
+        Object.keys(selectedAttributes).length !== Object.keys(attributeOptions).length)) || // Ensure all attributes are selected
     (filteredsingleProduct?.type === "simple" &&
       ((filteredsingleProduct?.stock_quantity < 1 &&
         filteredsingleProduct?.stock_quantity !== null &&
@@ -219,8 +221,9 @@ dispatch(toggleCart())
   }
   aria-disabled={
     (filteredsingleProduct?.type === "variable" &&
-      (filteredsingleProduct === null ||
-        filteredsingleProduct?.stock_status === "outofstock")) ||
+      (selectedVariation === null ||
+        filteredsingleProduct?.stock_status === "outofstock" ||
+        Object.keys(selectedAttributes).length !== Object.keys(attributeOptions).length)) || // Ensure all attributes are selected
     (filteredsingleProduct?.type === "simple" &&
       ((filteredsingleProduct?.stock_quantity < 1 &&
         filteredsingleProduct?.stock_quantity !== null &&
@@ -232,6 +235,8 @@ dispatch(toggleCart())
   <ShoppingCart className="h-5 w-5" />
   Add to Cart
 </Button>
+
+
 
 
               <Button variant="outline" size="lg">
