@@ -23,7 +23,7 @@ const HomeSlide = () => {
         className="h-full"
       >
         <SwiperSlide className='h-full'>
-          <div className="relative h-[400px]">
+          <div className="relative md:h-[400px] h-[118px]">
             <Image
               src={slideimg1}
               alt="Daisy Dress"
