@@ -252,3 +252,140 @@ body, html {
 .product-image:hover .overlay {
   opacity: 1;
 }
+
+.checkoutpage-sec .container{
+  padding: 20px;
+    box-shadow: 0px 0px 8px #3a5990;
+    margin-bottom: 20px;
+}
+
+.checkoutpage-sec h2 {
+  color: #3296b1;
+  font-size: 25px;
+}
+
+.checkoutpage-sec p{
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.checkoutpage-sec input,
+.checkoutpage-sec select {
+  font-size: 1em;
+    height: 50px;
+    line-height: 1em;
+    margin: 10px 0px;
+    min-height: 0;
+    padding: 8px;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.checkoutpage-sec  .name-col{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.place-order-btn button{
+  background: #3298b1;
+    border: none;
+    padding: 10px 0px;
+    border-radius: 0px;
+    color: #222222;
+    font-size: 19px;
+    font-weight: 600;
+    width: 100%;
+}
+
+.checkout-cart{
+  border: 1px solid hsla(0, 0%, 7%, .11);
+  border-radius: 5px;
+}
+
+.order-summary-item-image{
+  margin-top: 10px;
+  padding-bottom: 16px;
+  position: relative;
+  width: 48px;
+}
+
+.order-summary-item_quantity{
+  background: #f6b647;
+    border: 2px solid hsla(0, 0%, 7%, .11);
+    border-radius: 1em;
+    box-shadow: 0 0 0 2px #fff;
+    color: #ffffff;
+    min-height: 20px;
+    min-width: 20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    line-height: 1;
+    position: absolute;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+.item-cart-col{
+  display: flex;
+    flex-direction: row;
+    gap: 20px;
+    font-size: 14px;
+    
+}
+
+.item-title{
+  display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.product-details_variations{
+  list-style: none;
+}
+
+.checkout-cart-row{
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+}
+
+.accordion-button:not(.collapsed){
+  background: transparent !important;
+}
+.accordion-button:focus {
+  box-shadow: none !important;
+}
+.collapse {
+  visibility: visible;
+}
+.coupon-field input{
+  width: 70% !important;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.coupon-field button{
+  background: #FFB715;
+    border: none;
+    border-radius: 0px;
+    color: #222222;
+    font-size: 16px;
+    font-weight: 600;
+    width: 30%;
+    height: 50px;
+}
+
+.subt-total{
+  padding: 16px 20px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.payment-tabs .nav-link:focus,
+.payment-tabs .nav-link:active{
+  color: #ffb715 !important;
+}

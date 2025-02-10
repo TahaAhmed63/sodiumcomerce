@@ -191,7 +191,7 @@ dispatch(toggleCart())
               </button>
             )}
  <div className="quantity-controls d-flex align-items-center gap-2">
-              <button onClick={handleDecrement} className="btn btn-warning">-</button>
+              <button onClick={handleDecrement} className="btn btn-dark">-</button>
               <input
                 type="number"
                 value={quantity}
@@ -200,7 +200,7 @@ dispatch(toggleCart())
                 style={{ width: "50px" }}
                 min="1"
               />
-              <button onClick={handleIncrement} className="btn btn-warning">+</button>
+              <button onClick={handleIncrement} className="btn btn-dark">+</button>
               </div>
             <div className="flex flex-col gap-4 sm:flex-row">
             <Button

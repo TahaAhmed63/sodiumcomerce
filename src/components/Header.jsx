@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { User, ShoppingBag, Facebook, Twitter, Instagram, Search, Menu, X } from 'lucide-react';
 import Image from 'next/image';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleCart } from '@/store/slice/cartslice';
 import logo from './../assest/newsodium.png';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,6 +20,8 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dispatch = useDispatch();
 
+
+  const cartItems = useSelector((state) => state.cart.items);
   return (
     <div className="sticky-top bg-black text-dark">
       {/* Top Header */}
@@ -40,7 +42,7 @@ export default function Header() {
           <button className="btn btn-outline-light"><User className="h-5 w-5" /></button>
           <button className="btn btn-outline-light position-relative" onClick={() => dispatch(toggleCart())}>
             <ShoppingBag className="h-5 w-5" />
-            <span className="badge bg-warning position-absolute" style={{ top: '-5px', right: '-5px', fontSize: '12px', padding: '5px 8px' }}>0</span>
+            <span className="badge bg-warning position-absolute" style={{ top: '-5px', right: '-5px', fontSize: '12px', padding: '5px 8px' }}>{cartItems?.length}</span>
           </button>
         </div>
       </div>
