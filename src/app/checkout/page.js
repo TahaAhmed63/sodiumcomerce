@@ -8,11 +8,14 @@ import Tabs from 'react-bootstrap/Tabs';
 import { useDispatch, useSelector } from 'react-redux';
 import Axios from 'axios';
 import { useRouter } from 'next/navigation';
+import CheckoutButton from '@/Components/checkountbutton/StripeCheckoutForm';
+import StripeCheckout from '@/Components/checkountbutton/StripeCheckoutForm';
 
 const Checkout = () => {
   const [activeIndex, setActiveIndex] = useState(null);
   const dispatch = useDispatch();
     const cartItems = useSelector((state) => state.cart.items);
+    const [price,setPrice]=useState()
     const router=useRouter()
     const [orderData, setOrderData] = useState({
       billing: {
@@ -39,6 +42,7 @@ const Checkout = () => {
       const lineItems = cartItems.map((item) => ({
         product_id: item.id,
         quantity: item.quantity,
+        price:item.price,
       }));
       setOrderData((prevData) => ({ ...prevData, line_items: lineItems }));
     } else {
@@ -77,6 +81,7 @@ const Checkout = () => {
   const calculateSubtotal = () => {
     return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
   };
+  const pricemain=orderData?.line_items?.map((e)=>e?.price)
 
   return (
     <>
@@ -202,6 +207,20 @@ const Checkout = () => {
                       >
                       <p className="pb-3">  Pay with cash upon delivery.</p>
                       </Tab>
+                      <Tab eventKey="card" title="Credit/Debit Card"                     defaultActiveKey="card"
+                      onSelect={(key) =>
+                        setOrderData((prevData) => ({
+                          ...prevData,
+                          payment_method: key,
+                          payment_method_title:
+                            key === "card" ? "card" : "Cheque Payment",
+                        }))   }
+                      >
+                 <p>Pay securely with your card.</p>
+
+                 <StripeCheckout amount={pricemain } />
+                 
+                                       </Tab>
                       
                    </Tabs>
 

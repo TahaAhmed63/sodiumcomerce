@@ -32,12 +32,18 @@ export default function ProductPage({ params }) {
 
   // Extract unique attributes
   const attributes = {};
-  filteredsingleProduct?.variations?.forEach(variation => {
-    Object.entries(variation.attributes).forEach(([key, value]) => {
-      if (!attributes[key]) attributes[key] = new Set();
-      attributes[key].add(value);
-    });
-  });
+filteredsingleProduct?.type === "variable" ? filteredsingleProduct?.variations.forEach((variant)=>{
+ Object.entries(variant.attributes).forEach(([key,values])=>{
+  if (!attributes[key]) attributes[key] = new Set();
+      attributes[key].add(values);
+  
+ })
+
+
+}) :''
+
+console.log(attributes,"attributes")
+
   const handleIncrement = () => {
     setQuantity(prevQuantity => prevQuantity + 1);
   };
@@ -103,7 +109,7 @@ dispatch(toggleCart())
   const minPrice = prices.length > 0 ? Math.min(...prices) : null;
   const maxPrice = prices.length > 0 ? Math.max(...prices) : null;
 
-  
+  console.log(filteredsingleProduct,"")
   return (
     <div className="min-h-screen bg-background">
       <div className="mx-auto max-w-7xl px-4 py-8 md:px-6 lg:px-8">

@@ -14,6 +14,8 @@
     "@radix-ui/react-slot": "^1.1.1",
     "@react-native-async-storage/async-storage": "^2.1.0",
     "@reduxjs/toolkit": "^2.5.0",
+    "@stripe/react-stripe-js": "^3.1.1",
+    "@stripe/stripe-js": "^5.7.0",
     "@woocommerce/woocommerce-rest-api": "^1.0.1",
     "bootstrap": "^5.3.3",
     "class-variance-authority": "^0.7.1",
@@ -26,6 +28,7 @@
     "react-dom": "^18",
     "react-redux": "^9.2.0",
     "redux-persist": "^6.0.0",
+    "stripe": "^17.7.0",
     "swiper": "^11.1.14",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
